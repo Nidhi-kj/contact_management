@@ -1,0 +1,23 @@
+[project]
+name = "contact-management"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "email-validator>=2.3.0",
+    "fastapi>=0.162.0",
+    "pwdlib[argon2]>=0.3.1",
+    "pydantic>=2.14.2",
+    "pyjwt[crypto]>=2.15.1",
+    "pymysql>=1.2.3",
+    "sqlalchemy>=2.1.6",
+    "uvicorn>=0.54.0",
+]
+
+[project.scripts]
+contact-management = "contact_management:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"

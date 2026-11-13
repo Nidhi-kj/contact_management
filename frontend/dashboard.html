@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ContactHub | Contact Management System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="brand">
+                <h2>ContactHub</h2>
+                <p>Management System</p>
+            </div>
+
+            <nav class="navigation">
+
+                <button class="nav-btn active" data-section="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="nav-btn" data-section="contacts">
+                    Contacts
+                </button>
+
+                <button class="nav-btn" data-section="companies">
+                    Companies
+                </button>
+
+                <button class="nav-btn" data-section="phones">
+                    Phones
+                </button>
+
+                <button class="nav-btn" data-section="notes">
+                    Notes
+                </button>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h1 id="pageTitle">Dashboard</h1>
+
+                    <p id="pageSubtitle">
+                        Welcome to your Contact Management System
+                    </p>
+                </div>
+
+                <div class="status">
+                    System Online
+                </div>
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="logout()">
+                    Logout
+                </button>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard" class="page-section">
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <p>Total Contacts</p>
+                        <h2 id="totalContacts">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Total Companies</p>
+                        <h2 id="totalCompanies">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Total Phones</p>
+                        <h2 id="totalPhones">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Total Notes</p>
+                        <h2 id="totalNotes">0</h2>
+                    </div>
+
+                </div>
+
+                <div class="welcome-card">
+
+                    <h2>Welcome to ContactHub!</h2>
+
+                    <p>
+                        Manage your personal contacts, companies,
+                        phone numbers and notes from one place.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTACTS -->
+            <section id="contacts" class="page-section hidden">
+
+                <div class="module-toolbar">
+
+                    <input
+                        type="search"
+                        id="contactsSearch"
+                        placeholder="Search contacts...">
+
+                    <button
+                        class="btn primary add-btn"
+                        data-add="contacts">
+                        + Add Contact
+                    </button>
+
+                </div>
+
+                <div id="contactsTable"></div>
+                <div id="contactsPagination"></div>
+
+            </section>
+
+
+            <!-- COMPANIES -->
+            <section id="companies" class="page-section hidden">
+
+                <div class="module-toolbar">
+
+                    <input
+                        type="search"
+                        id="companiesSearch"
+                        placeholder="Search companies...">
+
+                    <button
+                        class="btn primary add-btn"
+                        data-add="companies">
+                        + Add Company
+                    </button>
+
+                </div>
+
+                <div id="companiesTable"></div>
+                <div id="companiesPagination"></div>
+
+            </section>
+
+
+            <!-- PHONES -->
+            <section id="phones" class="page-section hidden">
+
+                <div class="module-toolbar">
+
+                    <input
+                        type="search"
+                        id="phonesSearch"
+                        placeholder="Search phone numbers...">
+
+                    <button
+                        class="btn primary add-btn"
+                        data-add="phones">
+                        + Add Phone
+                    </button>
+
+                </div>
+
+                <div id="phonesTable"></div>
+                <div id="phonesPagination"></div>
+
+            </section>
+
+
+            <!-- NOTES -->
+            <section id="notes" class="page-section hidden">
+
+                <div class="module-toolbar">
+
+                    <input
+                        type="search"
+                        id="notesSearch"
+                        placeholder="Search notes...">
+
+                    <button
+                        class="btn primary add-btn"
+                        data-add="notes">
+                        + Add Note
+                    </button>
+
+                </div>
+
+                <div id="notesTable"></div>
+                <div id="notesPagination"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ADD / EDIT MODAL -->
+    <div id="modal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 id="modalTitle">Add Record</h2>
+
+                <button
+                    type="button"
+                    id="closeModal"
+                    class="close-btn">
+                    &times;
+                </button>
+
+            </div>
+
+            <form id="recordForm">
+
+                <div id="formFields"></div>
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelBtn"
+                        class="btn secondary">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        id="saveBtn"
+                        class="btn primary">
+                        Save
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST MESSAGE -->
+    <div id="toast" class="toast"></div>
+
+
+    <!-- AUTHENTICATION CHECK -->
+    <script src="auth.js"></script>
+
+    <script>
+        if (checkLogin()) {
+            const script = document.createElement("script");
+            script.src = "script.js";
+            document.body.appendChild(script);
+        }
+    </script>
+
+</body>
+</html>
