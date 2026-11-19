@@ -1,20 +1,25 @@
+import os
+from dotenv import load_dotenv
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-DATABASE_URL = "mysql+pymysql://root:root@localhost:3306/contact_management"
+# .env file load karna
+load_dotenv()
+
+# Environment variable se database URL lena
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(DATABASE_URL, echo=True)
 
-
-
 Base = declarative_base()
 
-# object create krne k lye template session bnta h
 SessionLocal = sessionmaker(
     bind=engine,
     autoflush=False,
     autocommit=False
 )
+
 def get_db():
     db = SessionLocal()
     try:
